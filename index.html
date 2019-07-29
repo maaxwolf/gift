@@ -1,1 +1,57 @@
-test
+<!DOCTYPE html>
+<html lang="it" dir="ltr">
+  <head>
+    <style media="screen">
+        body {          background-color: lightgreen;        }
+        div{
+          position:  absolute ;
+          top: 30%;
+          left: 15%;
+          border: 3px solid white;
+          border-radius: 100px;
+          box-shadow:20px 20px 40px 10px green;
+          width: 70%;
+          padding: 2%;
+          box-sizing: border-box;
+        }
+        h1 {          color: white;          text-align: center;        }
+        h2 {          color: white;          text-align: center;        }
+    </style>
+    <meta charset="utf-8">
+    <title id="tit">Card</title>
+  </head>
+  <body>
+    <div class="">
+      <h1 id="dis" ></h1>
+      <h2 id="dis2"></h2>
+    </div>
+    <script type="text/javascript">
+      //Customization it is a  birthday[true] or a anniversary[false]?
+      let choice = true;
+      let day_C = 1, month_C = 1, year_C = 1;// birthday
+      let day_A = 1, month_A = 1, year_A = 1; //anniversary
+      let msg_birthday = `put the text here , age `;
+      let msg_anniversary = `put the text here , day `;
+      let str =[`put the text here 1`,`put the text here 2`,`put the text here 3`];
+      let date1 = new Date();
+      let date2 = new Date(`${month_A}/${day_A}/${year_A}`);
+      let timeDiff = Math.abs(date2.getTime() - date1.getTime());
+      let diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+      let x = `[Error]`;
+      let num = Math.trunc(Math.random()*str.length);
+      let age = date1.getFullYear() - year_C;
+      if(choice && date1.getMonth()==month_C && date1.getDate()==day_C){
+        x =msg_birthday +` ${age}`;
+        console.log('birthday, age: ',age);
+        document.getElementById('dis2').innerHTML = x;
+        document.getElementById('tit').innerHTML = `Birthday Card`;
+      }else if(!choice){
+        x = str[num];
+        console.log(`sentence: \'${x}\'`);
+        document.getElementById('dis').innerHTML =  msg_anniversary+`${diffDays}`;
+        document.getElementById('dis2').innerHTML = x;
+        document.getElementById('tit').innerHTML = `Anniversary Card`;
+      }
+    </script>
+  </body>
+</html>
